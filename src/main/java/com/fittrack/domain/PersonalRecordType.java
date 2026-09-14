@@ -1,0 +1,7 @@
+package com.fittrack.domain;
+
+public enum PersonalRecordType {
+    HEAVIEST_AT_REPS,
+    ESTIMATED_1RM,
+    VOLUME
+}

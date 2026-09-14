@@ -1,12 +1,12 @@
 package com.fittrack.service;
 
-import com.fittrack.domain.common.MuscleGroup;
-import com.fittrack.domain.common.ValidationException;
-import com.fittrack.domain.exercise.Exercise;
-import com.fittrack.domain.exercise.FreeExerciseDbLoader;
-import com.fittrack.domain.exercise.FreeExerciseMuscleMapper;
-import com.fittrack.persistence.sqlite.Database;
-import com.fittrack.persistence.sqlite.ExerciseDao;
+import com.fittrack.domain.MuscleGroup;
+import com.fittrack.domain.ValidationException;
+import com.fittrack.domain.Exercise;
+import com.fittrack.domain.FreeExerciseDbLoader;
+import com.fittrack.domain.FreeExerciseMuscleMapper;
+import com.fittrack.persistence.Database;
+import com.fittrack.persistence.ExerciseDao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

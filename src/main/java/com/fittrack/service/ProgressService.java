@@ -1,14 +1,14 @@
 package com.fittrack.service;
 
-import com.fittrack.concurrent.PrNotificationBuffer;
-import com.fittrack.domain.common.OneRepMaxFormula;
-import com.fittrack.domain.common.PersonalRecordType;
-import com.fittrack.domain.progress.PersonalRecord;
-import com.fittrack.domain.user.Profile;
-import com.fittrack.domain.workout.LoggedSet;
-import com.fittrack.persistence.sqlite.PersonalRecordDao;
-import com.fittrack.persistence.sqlite.ProfileDao;
-import com.fittrack.persistence.sqlite.WorkoutSessionDao;
+import com.fittrack.service.PrNotificationBuffer;
+import com.fittrack.domain.OneRepMaxFormula;
+import com.fittrack.domain.PersonalRecordType;
+import com.fittrack.domain.PersonalRecord;
+import com.fittrack.domain.Profile;
+import com.fittrack.domain.LoggedSet;
+import com.fittrack.persistence.PersonalRecordDao;
+import com.fittrack.persistence.ProfileDao;
+import com.fittrack.persistence.WorkoutSessionDao;
 
 import java.util.ArrayList;
 import java.util.List;

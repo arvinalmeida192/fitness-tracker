@@ -1,7 +1,7 @@
 package com.fittrack.service;
 
-import com.fittrack.domain.progress.PersonalRecord;
-import com.fittrack.domain.workout.LoggedSet;
+import com.fittrack.domain.PersonalRecord;
+import com.fittrack.domain.LoggedSet;
 
 import java.util.List;
 

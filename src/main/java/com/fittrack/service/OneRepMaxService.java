@@ -1,11 +1,11 @@
 package com.fittrack.service;
 
-import com.fittrack.domain.common.OneRepMaxFormula;
-import com.fittrack.domain.progress.BrzyckiCalculator;
-import com.fittrack.domain.progress.EpleyCalculator;
-import com.fittrack.domain.progress.LombardiCalculator;
-import com.fittrack.domain.progress.OneRepMaxCalculator;
-import com.fittrack.domain.workout.LoggedSet;
+import com.fittrack.domain.OneRepMaxFormula;
+import com.fittrack.domain.BrzyckiCalculator;
+import com.fittrack.domain.EpleyCalculator;
+import com.fittrack.domain.LombardiCalculator;
+import com.fittrack.domain.OneRepMaxCalculator;
+import com.fittrack.domain.LoggedSet;
 
 import java.util.EnumMap;
 import java.util.Map;

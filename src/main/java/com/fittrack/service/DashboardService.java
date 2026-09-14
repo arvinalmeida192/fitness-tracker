@@ -1,9 +1,9 @@
 package com.fittrack.service;
 
-import com.fittrack.domain.progress.PersonalRecord;
-import com.fittrack.domain.user.BodyGoal;
-import com.fittrack.domain.user.WeightEntry;
-import com.fittrack.persistence.sqlite.BodyGoalDao;
+import com.fittrack.domain.PersonalRecord;
+import com.fittrack.domain.BodyGoal;
+import com.fittrack.domain.WeightEntry;
+import com.fittrack.persistence.BodyGoalDao;
 import com.fittrack.util.BodyMetrics;
 
 import java.time.LocalDate;
@@ -57,10 +57,10 @@ public final class DashboardService {
 
     public BodyGoal saveBodyGoal(double targetWeightKg, LocalDate targetDate) {
         if (targetWeightKg < 30 || targetWeightKg > 400) {
-            throw new com.fittrack.domain.common.ValidationException("Target weight must be between 30 and 400 kg");
+            throw new com.fittrack.domain.ValidationException("Target weight must be between 30 and 400 kg");
         }
         if (targetDate != null && targetDate.isBefore(LocalDate.now(ZoneId.systemDefault()))) {
-            throw new com.fittrack.domain.common.ValidationException("Target date cannot be in the past");
+            throw new com.fittrack.domain.ValidationException("Target date cannot be in the past");
         }
         BodyGoal goal = new BodyGoal(userSession.requireUser().getId(), targetWeightKg, targetDate);
         return bodyGoalDao.upsert(goal);

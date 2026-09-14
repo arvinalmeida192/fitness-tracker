@@ -102,43 +102,21 @@ Java_project/
 ├── pom.xml
 ├── README.md
 ├── config.local.properties          # optional local overrides (not committed)
-├── data/
-│   └── fittrack.db                  # created at runtime
+├── data/fittrack.db                 # created at runtime
 └── src/main/
     ├── java/com/fittrack/
-    │   ├── app/                     # bootstrap & composition root
-    │   ├── api/nutrition/           # USDA HTTP client
-    │   ├── concurrent/              # PR notification buffer (Vector)
-    │   ├── domain/                  # entities & pure domain logic
-    │   │   ├── common/              # enums, macros, exceptions, BaseEntity
-    │   │   ├── user/                # User, Profile, WeightEntry, BodyGoal
-    │   │   ├── exercise/            # Exercise, catalog loader, muscle volume
-    │   │   ├── workout/             # WorkoutPlan, PlanItem, Session, LoggedSet
-    │   │   ├── nutrition/           # Ingredient, Dish, MealLog, NutritionGoal, …
-    │   │   └── progress/            # 1RM calculators, PersonalRecord
-    │   ├── persistence/
-    │   │   ├── migration/           # numbered SQL migrations
-    │   │   └── sqlite/              # Database + DAOs
-    │   ├── service/                 # application services / use cases
-    │   ├── export/                  # SQLite & JSON backup
+    │   ├── app/                     # FitTrackApp, AppContext, AppConfig
+    │   ├── api/                     # USDA HTTP client
+    │   ├── domain/                  # entities, enums, calculators, exceptions
+    │   ├── persistence/             # Database, migrations, DAOs
+    │   ├── service/                 # use cases, backup, session, PR buffer
     │   ├── util/                    # hashing, password strength, body metrics
-    │   └── ui/                      # JavaFX views by feature
-    │       ├── auth/
-    │       ├── home/
-    │       ├── profile/
-    │       ├── library/
-    │       ├── plans/
-    │       ├── live/
-    │       ├── nutrition/
-    │       ├── progress/
-    │       ├── settings/
-    │       └── common/              # Theme, UiSupport, SearchableComboBox
+    │   └── ui/                      # ShellController + all JavaFX views
     └── resources/
         ├── config.properties
-        ├── css/fittrack.css
-        ├── fonts/                   # Manrope
-        └── exercises/
-            └── free-exercise-db.json
+        ├── fittrack.css
+        ├── free-exercise-db.json
+        └── fonts/                   # Manrope
 ```
 
 ### Package responsibilities
@@ -146,13 +124,10 @@ Java_project/
 | Package | Role |
 |---|---|
 | `app` | `FitTrackApp` launches JavaFX; `AppContext` wires DAOs/services; `AppConfig` loads classpath + local + env config |
-| `api.nutrition` | `UsdaFoodDataClient` — search and fetch foods; maps to domain `Ingredient` |
-| `domain.*` | Persistence-free models; 1RM strategies (`OneRepMaxCalculator`); `PortionScaler`; catalog mapping |
-| `persistence.sqlite` | JDBC DAOs; `Database` connection; `ConnectionTxn` for multi-statement work |
-| `persistence.migration` | `MigrationRunner` — versioned schema in `app_meta` |
-| `service` | Auth, profile, exercises, plans, live sessions, nutrition, goals, dashboard, progress, muscle volume |
-| `export` | `BackupService` — copy SQLite file; Jackson JSON user snapshot import/export |
-| `concurrent` | `PrNotificationBuffer` — bounded recent PR list for Settings |
+| `api` | `UsdaFoodDataClient` — search and fetch foods; maps to domain `Ingredient` |
+| `domain` | Persistence-free models; 1RM strategies; `PortionScaler`; catalog mapping; shared enums/exceptions |
+| `persistence` | JDBC DAOs; `Database`; `ConnectionTxn`; `MigrationRunner` (versioned schema in `app_meta`) |
+| `service` | Auth, profile, exercises, plans, live sessions, nutrition, goals, dashboard, progress, backups, PR buffer |
 | `util` | `PasswordHasher` (PBKDF2), `PasswordStrengthChecker`, `BodyMetrics` (BMI/BMR/TDEE) |
 | `ui` | `ShellController` side-nav shell; feature views share `UiSupport.page` / `embed` chrome |
 
@@ -164,7 +139,7 @@ Java_project/
 - **1RM:** Epley / Brzycki / Lombardi strategies behind `OneRepMaxCalculator`; all three stored on each weighted set; profile picks preferred display formula.
 - **Muscle volume:** primary muscle = 1.0 set, secondary = 0.5; shown on plan editor (planned) and Progress (week completed).
 - **Backups:** full DB file replace (`restoreDatabaseFrom`) or portable JSON (profile, weights, goals, meals, dishes). PRs live in SQLite and are regenerated from training history, not JSON round-tripped.
-- **UI theme:** Manrope fonts + `css/fittrack.css` (teal/slate); applied in `Theme.apply(scene)`.
+- **UI theme:** Manrope fonts + `fittrack.css` (teal/slate); applied in `Theme.apply(scene)`.
 
 ### Build & run
 
@@ -189,12 +164,12 @@ Useful if this is graded coursework:
 
 | Topic | Where |
 |---|---|
-| OOP / encapsulation | `domain.*` aggregates (User–Profile, Dish–DishItem, Plan–PlanItem) |
+| OOP / encapsulation | `domain` aggregates (User–Profile, Dish–DishItem, Plan–PlanItem) |
 | Interfaces / polymorphism | `OneRepMaxCalculator` + Epley / Brzycki / Lombardi |
 | Collections | Exercise muscle maps; plan item lists; PR `Vector` buffer |
 | Strings / regex | `PasswordStrengthChecker` |
 | Custom exceptions | `ValidationException`, `AuthenticationException`, `NutritionApiException`, `OfflineDataException`, … |
 | Multithreading | Nutrition search workers, backup `ExecutorService`, rest `Timeline` |
 | REST client | `UsdaFoodDataClient` |
-| JDBC | DAOs under `persistence.sqlite` |
+| JDBC | DAOs under `persistence` |
 | File I/O | `BackupService`, `AppConfig` local overrides |

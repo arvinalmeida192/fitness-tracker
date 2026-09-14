@@ -1,7 +1,7 @@
 package com.fittrack.util;
 
-import com.fittrack.domain.common.ActivityLevel;
-import com.fittrack.domain.common.Sex;
+import com.fittrack.domain.ActivityLevel;
+import com.fittrack.domain.Sex;
 
 /**
  * BMI and Mifflin–St Jeor energy estimates.

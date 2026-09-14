@@ -1,14 +1,14 @@
 package com.fittrack.service;
 
-import com.fittrack.domain.common.Macros;
-import com.fittrack.domain.common.MealType;
-import com.fittrack.domain.common.ValidationException;
-import com.fittrack.domain.nutrition.Dish;
-import com.fittrack.domain.nutrition.Ingredient;
-import com.fittrack.domain.nutrition.MealLog;
-import com.fittrack.domain.nutrition.PortionScaler;
-import com.fittrack.persistence.sqlite.IngredientDao;
-import com.fittrack.persistence.sqlite.MealLogDao;
+import com.fittrack.domain.Macros;
+import com.fittrack.domain.MealType;
+import com.fittrack.domain.ValidationException;
+import com.fittrack.domain.Dish;
+import com.fittrack.domain.Ingredient;
+import com.fittrack.domain.MealLog;
+import com.fittrack.domain.PortionScaler;
+import com.fittrack.persistence.IngredientDao;
+import com.fittrack.persistence.MealLogDao;
 
 import java.time.Instant;
 import java.time.LocalDate;

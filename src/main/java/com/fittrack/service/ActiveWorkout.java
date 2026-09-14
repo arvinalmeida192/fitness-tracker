@@ -1,7 +1,7 @@
 package com.fittrack.service;
 
-import com.fittrack.domain.workout.PlanItem;
-import com.fittrack.domain.workout.WorkoutSession;
+import com.fittrack.domain.PlanItem;
+import com.fittrack.domain.WorkoutSession;
 
 import java.util.ArrayList;
 import java.util.Collections;

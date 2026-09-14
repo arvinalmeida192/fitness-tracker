@@ -1,17 +1,7 @@
 package com.fittrack.ui;
 
 import com.fittrack.app.AppContext;
-import com.fittrack.persistence.migration.MigrationRunner;
-import com.fittrack.ui.auth.LoginView;
-import com.fittrack.ui.auth.RegisterView;
-import com.fittrack.ui.common.Theme;
-import com.fittrack.ui.home.DashboardView;
-import com.fittrack.ui.library.ExerciseLibraryView;
-import com.fittrack.ui.nutrition.NutritionHubView;
-import com.fittrack.ui.plans.PlanListView;
-import com.fittrack.ui.profile.ProfileView;
-import com.fittrack.ui.progress.ProgressView;
-import com.fittrack.ui.settings.SettingsView;
+import com.fittrack.persistence.MigrationRunner;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;

@@ -1,6 +1,6 @@
 package com.fittrack.service;
 
-import com.fittrack.domain.user.User;
+import com.fittrack.domain.User;
 
 /**
  * Holds the currently authenticated user for this app process.

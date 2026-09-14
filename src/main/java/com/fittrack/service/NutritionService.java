@@ -1,13 +1,13 @@
 package com.fittrack.service;
 
-import com.fittrack.api.nutrition.UsdaFoodDataClient;
-import com.fittrack.api.nutrition.UsdaSearchHit;
+import com.fittrack.api.UsdaFoodDataClient;
+import com.fittrack.api.UsdaSearchHit;
 import com.fittrack.app.AppConfig;
-import com.fittrack.domain.common.NutritionApiException;
-import com.fittrack.domain.common.OfflineDataException;
-import com.fittrack.domain.common.ValidationException;
-import com.fittrack.domain.nutrition.Ingredient;
-import com.fittrack.persistence.sqlite.IngredientDao;
+import com.fittrack.domain.NutritionApiException;
+import com.fittrack.domain.OfflineDataException;
+import com.fittrack.domain.ValidationException;
+import com.fittrack.domain.Ingredient;
+import com.fittrack.persistence.IngredientDao;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

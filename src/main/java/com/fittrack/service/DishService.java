@@ -1,15 +1,15 @@
 package com.fittrack.service;
 
-import com.fittrack.domain.common.ValidationException;
-import com.fittrack.domain.nutrition.Dish;
-import com.fittrack.domain.nutrition.DishItem;
-import com.fittrack.domain.nutrition.Ingredient;
-import com.fittrack.domain.nutrition.PortionScaler;
-import com.fittrack.domain.user.User;
-import com.fittrack.persistence.sqlite.ConnectionTxn;
-import com.fittrack.persistence.sqlite.Database;
-import com.fittrack.persistence.sqlite.DishDao;
-import com.fittrack.persistence.sqlite.IngredientDao;
+import com.fittrack.domain.ValidationException;
+import com.fittrack.domain.Dish;
+import com.fittrack.domain.DishItem;
+import com.fittrack.domain.Ingredient;
+import com.fittrack.domain.PortionScaler;
+import com.fittrack.domain.User;
+import com.fittrack.persistence.ConnectionTxn;
+import com.fittrack.persistence.Database;
+import com.fittrack.persistence.DishDao;
+import com.fittrack.persistence.IngredientDao;
 
 import java.util.ArrayList;
 import java.util.List;

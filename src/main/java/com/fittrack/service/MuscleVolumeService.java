@@ -1,13 +1,13 @@
 package com.fittrack.service;
 
-import com.fittrack.domain.common.MuscleGroup;
-import com.fittrack.domain.exercise.Exercise;
-import com.fittrack.domain.exercise.MuscleSetVolume;
-import com.fittrack.domain.workout.LoggedSet;
-import com.fittrack.domain.workout.PlanItem;
-import com.fittrack.domain.workout.WorkoutPlan;
-import com.fittrack.persistence.sqlite.ExerciseDao;
-import com.fittrack.persistence.sqlite.WorkoutSessionDao;
+import com.fittrack.domain.MuscleGroup;
+import com.fittrack.domain.Exercise;
+import com.fittrack.domain.MuscleSetVolume;
+import com.fittrack.domain.LoggedSet;
+import com.fittrack.domain.PlanItem;
+import com.fittrack.domain.WorkoutPlan;
+import com.fittrack.persistence.ExerciseDao;
+import com.fittrack.persistence.WorkoutSessionDao;
 
 import java.time.DayOfWeek;
 import java.time.Instant;

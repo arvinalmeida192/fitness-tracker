@@ -1,7 +1,7 @@
 package com.fittrack.app;
 
 import com.fittrack.ui.ShellController;
-import com.fittrack.ui.common.Theme;
+import com.fittrack.ui.Theme;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;

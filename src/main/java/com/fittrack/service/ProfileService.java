@@ -1,15 +1,15 @@
 package com.fittrack.service;
 
-import com.fittrack.domain.common.ActivityLevel;
-import com.fittrack.domain.common.OneRepMaxFormula;
-import com.fittrack.domain.common.Sex;
-import com.fittrack.domain.common.Units;
-import com.fittrack.domain.common.ValidationException;
-import com.fittrack.domain.user.Profile;
-import com.fittrack.domain.user.User;
-import com.fittrack.domain.user.WeightEntry;
-import com.fittrack.persistence.sqlite.ProfileDao;
-import com.fittrack.persistence.sqlite.WeightEntryDao;
+import com.fittrack.domain.ActivityLevel;
+import com.fittrack.domain.OneRepMaxFormula;
+import com.fittrack.domain.Sex;
+import com.fittrack.domain.Units;
+import com.fittrack.domain.ValidationException;
+import com.fittrack.domain.Profile;
+import com.fittrack.domain.User;
+import com.fittrack.domain.WeightEntry;
+import com.fittrack.persistence.ProfileDao;
+import com.fittrack.persistence.WeightEntryDao;
 import com.fittrack.util.BodyMetrics;
 
 import java.time.Instant;

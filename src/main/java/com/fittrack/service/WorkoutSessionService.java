@@ -1,15 +1,15 @@
 package com.fittrack.service;
 
-import com.fittrack.domain.common.OneRepMaxFormula;
-import com.fittrack.domain.common.ValidationException;
-import com.fittrack.domain.progress.PersonalRecord;
-import com.fittrack.domain.user.User;
-import com.fittrack.domain.workout.LoggedSet;
-import com.fittrack.domain.workout.PlanItem;
-import com.fittrack.domain.workout.WorkoutPlan;
-import com.fittrack.domain.workout.WorkoutSession;
-import com.fittrack.persistence.sqlite.ProfileDao;
-import com.fittrack.persistence.sqlite.WorkoutSessionDao;
+import com.fittrack.domain.OneRepMaxFormula;
+import com.fittrack.domain.ValidationException;
+import com.fittrack.domain.PersonalRecord;
+import com.fittrack.domain.User;
+import com.fittrack.domain.LoggedSet;
+import com.fittrack.domain.PlanItem;
+import com.fittrack.domain.WorkoutPlan;
+import com.fittrack.domain.WorkoutSession;
+import com.fittrack.persistence.ProfileDao;
+import com.fittrack.persistence.WorkoutSessionDao;
 
 import java.time.Instant;
 import java.util.List;

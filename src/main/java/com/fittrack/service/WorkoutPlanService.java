@@ -1,12 +1,12 @@
 package com.fittrack.service;
 
-import com.fittrack.domain.common.ValidationException;
-import com.fittrack.domain.exercise.Exercise;
-import com.fittrack.domain.user.User;
-import com.fittrack.domain.workout.PlanItem;
-import com.fittrack.domain.workout.WorkoutPlan;
-import com.fittrack.persistence.sqlite.ExerciseDao;
-import com.fittrack.persistence.sqlite.WorkoutPlanDao;
+import com.fittrack.domain.ValidationException;
+import com.fittrack.domain.Exercise;
+import com.fittrack.domain.User;
+import com.fittrack.domain.PlanItem;
+import com.fittrack.domain.WorkoutPlan;
+import com.fittrack.persistence.ExerciseDao;
+import com.fittrack.persistence.WorkoutPlanDao;
 
 import java.util.ArrayList;
 import java.util.List;

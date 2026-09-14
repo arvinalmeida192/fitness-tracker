@@ -1,10 +1,10 @@
 package com.fittrack.service;
 
-import com.fittrack.domain.common.Macros;
-import com.fittrack.domain.common.ValidationException;
-import com.fittrack.domain.nutrition.MealLog;
-import com.fittrack.domain.nutrition.NutritionGoal;
-import com.fittrack.persistence.sqlite.NutritionGoalDao;
+import com.fittrack.domain.Macros;
+import com.fittrack.domain.ValidationException;
+import com.fittrack.domain.MealLog;
+import com.fittrack.domain.NutritionGoal;
+import com.fittrack.persistence.NutritionGoalDao;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
