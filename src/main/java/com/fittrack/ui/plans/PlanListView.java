@@ -9,7 +9,6 @@ import com.fittrack.ui.common.UiSupport;
 import com.fittrack.ui.live.LiveWorkoutView;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -86,7 +85,6 @@ public final class PlanListView {
                 error,
                 table
         );
-        root.setPadding(new Insets(20));
         VBox.setVgrow(table, Priority.ALWAYS);
         refresh();
         return root;

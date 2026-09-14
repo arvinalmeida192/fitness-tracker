@@ -11,7 +11,6 @@ import com.fittrack.ui.common.UiSupport;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -38,10 +37,8 @@ public final class IngredientSearchView {
     private final TableView<NutritionService.SearchRow> table = new TableView<>();
 
     /** Body only — used inside {@link NutritionHubView}. */
-    public VBox getRootWithoutOuterTitle() {
-        VBox box = new VBox(12);
-        box.setPadding(new Insets(8, 24, 24, 24));
-        box.getChildren().addAll(bodyNodes());
+    public VBox getRoot() {
+        VBox box = UiSupport.embed(bodyNodes());
         VBox.setVgrow(table, Priority.ALWAYS);
         return box;
     }

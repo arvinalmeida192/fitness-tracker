@@ -1,9 +1,13 @@
 package com.fittrack.ui.common;
 
-import javafx.geometry.Insets;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 
+/**
+ * Shared page chrome so every screen uses the same surface and spacing.
+ */
 public final class UiSupport {
 
     private UiSupport() {
@@ -30,15 +34,29 @@ public final class UiSupport {
         label.setManaged(false);
     }
 
-    public static VBox page(String titleText, javafx.scene.Node... children) {
+    /** Full page with title — used by top-level screens. */
+    public static VBox page(String titleText, Node... children) {
         Theme.ensureFonts();
-        Label title = Theme.title(titleText);
         VBox box = new VBox(12);
         box.getStyleClass().add("page");
-        box.setPadding(new Insets(24));
-        box.getChildren().add(title);
+        box.getChildren().add(Theme.title(titleText));
         box.getChildren().addAll(children);
         return box;
+    }
+
+    /** Nested body inside a parent page (e.g. Nutrition tabs) — same spacing, no second card. */
+    public static VBox embed(Node... children) {
+        Theme.ensureFonts();
+        VBox box = new VBox(12);
+        box.getStyleClass().add("page-embed");
+        box.getChildren().addAll(children);
+        return box;
+    }
+
+    public static ScrollPane scroll(Node content) {
+        ScrollPane scroll = new ScrollPane(content);
+        Theme.styleScroll(scroll);
+        return scroll;
     }
 
     public static double parsePositiveDouble(String raw, String fieldName) {

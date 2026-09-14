@@ -7,12 +7,11 @@ import com.fittrack.ui.auth.RegisterView;
 import com.fittrack.ui.common.Theme;
 import com.fittrack.ui.home.DashboardView;
 import com.fittrack.ui.library.ExerciseLibraryView;
+import com.fittrack.ui.nutrition.NutritionHubView;
 import com.fittrack.ui.plans.PlanListView;
 import com.fittrack.ui.profile.ProfileView;
 import com.fittrack.ui.progress.ProgressView;
-import com.fittrack.ui.nutrition.NutritionHubView;
 import com.fittrack.ui.settings.SettingsView;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -22,9 +21,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
 /**
- * App shell: auth gate + navigation for logged-in users.
+ * App shell: auth gate + side navigation for logged-in users.
  */
 public final class ShellController {
 
@@ -32,6 +32,9 @@ public final class ShellController {
     private final StackPane content = new StackPane();
     private final Label statusLabel = new Label();
     private final Label userLabel = new Label();
+    private final VBox sideNav = new VBox();
+    private final Button homeNav = navButton("Home", this::showHome);
+    private Button activeNav;
 
     public ShellController() {
         Theme.ensureFonts();
@@ -39,6 +42,7 @@ public final class ShellController {
         content.getStyleClass().add("content-host");
         root.setCenter(content);
         root.setBottom(buildStatusBar());
+        buildSideNav();
         showAuthGate();
     }
 
@@ -47,27 +51,31 @@ public final class ShellController {
     }
 
     private void showAuthGate() {
-        root.setTop(null);
+        root.setLeft(null);
+        activeNav = null;
         refreshStatus();
         showLogin();
     }
 
     private void enterApp() {
-        root.setTop(buildNav());
+        root.setLeft(sideNav);
         refreshStatus();
         showHome();
     }
 
     private void showLogin() {
-        setContent(center(new LoginView(this::enterApp, this::showRegister).getRoot()));
+        setContent(centerAuth(new LoginView(this::enterApp, this::showRegister).getRoot()));
     }
 
     private void showRegister() {
-        setContent(center(new RegisterView(this::enterApp, this::showLogin).getRoot()));
+        setContent(centerAuth(new RegisterView(this::enterApp, this::showLogin).getRoot()));
     }
 
-    private HBox buildNav() {
-        Button home = navButton("Home", this::showHome);
+    private void buildSideNav() {
+        Label brand = new Label(AppContext.config().get("app.name", "FitTrack"));
+        brand.getStyleClass().add("side-brand");
+        brand.setWrapText(true);
+
         Button profile = navButton("Profile", () -> setContent(new ProfileView().getRoot()));
         Button library = navButton("Exercises", () -> setContent(new ExerciseLibraryView().getRoot()));
         Button plans = navButton("Plans", this::showPlans);
@@ -75,7 +83,11 @@ public final class ShellController {
         Button progress = navButton("Progress", () -> setContent(new ProgressView().getRoot()));
         Button settings = navButton("Settings", () -> setContent(new SettingsView(this::showAuthGate).getRoot()));
 
-        Button logout = navButton("Logout", () -> {
+        Button logout = new Button("Log out");
+        logout.getStyleClass().addAll("nav", "nav-logout");
+        logout.setMaxWidth(Double.MAX_VALUE);
+        logout.setAlignment(Pos.CENTER_LEFT);
+        logout.setOnAction(e -> {
             AppContext.workoutSessionService().current().ifPresent(w -> {
                 if (!w.isFinished()) {
                     try {
@@ -90,13 +102,18 @@ public final class ShellController {
         });
 
         Region spacer = new Region();
-        HBox.setHgrow(spacer, Priority.ALWAYS);
+        VBox.setVgrow(spacer, Priority.ALWAYS);
         userLabel.getStyleClass().setAll("nav-user");
+        userLabel.setWrapText(true);
 
-        HBox navBar = new HBox(8, home, profile, library, plans, nutrition, progress, settings, spacer, userLabel, logout);
-        navBar.setAlignment(Pos.CENTER_LEFT);
-        navBar.getStyleClass().add("nav-bar");
-        return navBar;
+        sideNav.getChildren().setAll(
+                brand,
+                homeNav, profile, library, plans, nutrition, progress, settings,
+                spacer,
+                userLabel,
+                logout
+        );
+        sideNav.getStyleClass().add("side-nav");
     }
 
     private Node buildStatusBar() {
@@ -116,14 +133,31 @@ public final class ShellController {
         statusLabel.setText("DB: " + dbPath + "  |  schema v" + version + "  |  user: " + user);
         if (AppContext.session().isLoggedIn()) {
             userLabel.setText(AppContext.session().requireUser().getUsername());
+        } else {
+            userLabel.setText("");
         }
     }
 
     private Button navButton(String text, Runnable action) {
         Button button = new Button(text);
         button.getStyleClass().add("nav");
-        button.setOnAction(e -> action.run());
+        button.setMaxWidth(Double.MAX_VALUE);
+        button.setAlignment(Pos.CENTER_LEFT);
+        button.setOnAction(e -> {
+            setActiveNav(button);
+            action.run();
+        });
         return button;
+    }
+
+    private void setActiveNav(Button button) {
+        if (activeNav != null) {
+            activeNav.getStyleClass().remove("nav-active");
+        }
+        activeNav = button;
+        if (!button.getStyleClass().contains("nav-active")) {
+            button.getStyleClass().add("nav-active");
+        }
     }
 
     private void showPlans() {
@@ -133,6 +167,7 @@ public final class ShellController {
 
     private void showHome() {
         refreshStatus();
+        setActiveNav(homeNav);
         setContent(new DashboardView().getRoot());
     }
 
@@ -140,10 +175,9 @@ public final class ShellController {
         content.getChildren().setAll(node);
     }
 
-    private static Node center(Node node) {
+    private static Node centerAuth(Node node) {
         StackPane pad = new StackPane(node);
-        pad.setPadding(new Insets(28));
-        pad.getStyleClass().add("content-host");
+        pad.getStyleClass().add("auth-host");
         return pad;
     }
 }

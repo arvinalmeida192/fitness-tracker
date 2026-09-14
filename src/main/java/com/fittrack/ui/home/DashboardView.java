@@ -7,8 +7,8 @@ import com.fittrack.domain.user.WeightEntry;
 import com.fittrack.service.DashboardService;
 import com.fittrack.service.NutritionGoalService;
 import com.fittrack.ui.common.Theme;
+import com.fittrack.ui.common.UiSupport;
 import com.fittrack.ui.nutrition.NutritionGoalsView;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -32,9 +32,6 @@ public final class DashboardView {
         DashboardService.HomeSnapshot snap = AppContext.dashboardService().home();
         String appName = AppContext.config().get("app.name", "Fitness Tracking System");
 
-        Label title = new Label(appName);
-        title.getStyleClass().add("hero-title");
-
         Label subtitle = Theme.muted("Welcome, " + snap.body().profile().getFullName()
                 + " — age " + snap.body().profile().getAge() + " (from DOB)");
 
@@ -42,46 +39,32 @@ public final class DashboardView {
         metrics.setWrapText(true);
         metrics.getStyleClass().add("body-text");
 
-        Label nutritionTitle = Theme.section("Today's nutrition");
-        VBox nutritionSection = new VBox(8, nutritionTitle);
+        VBox nutritionSection = new VBox(8, Theme.section("Today's nutrition"));
         nutritionSection.getChildren().addAll(buildNutritionBars(snap.today()));
 
-        Label weightTitle = Theme.section("Recent weight logs");
         Label weightBody = new Label(formatWeightLogs(snap.weightTrend()));
         weightBody.setWrapText(true);
         weightBody.getStyleClass().add("body-text");
 
-        Label prTitle = Theme.section("Recent personal records");
         Label prBody = new Label(formatPrs(snap));
         prBody.setWrapText(true);
         prBody.getStyleClass().add("body-text");
 
-        Label hint = Theme.hint("Use Plans to train, Nutrition → Goals for targets, Progress for logs and adherence.");
-
-        VBox card = new VBox(14,
-                title,
+        VBox page = UiSupport.page(
+                appName,
                 subtitle,
                 metrics,
                 new Separator(),
                 nutritionSection,
                 new Separator(),
-                weightTitle,
+                Theme.section("Recent weight logs"),
                 weightBody,
                 new Separator(),
-                prTitle,
+                Theme.section("Recent personal records"),
                 prBody,
-                hint
+                Theme.hint("Use Plans to train, Nutrition → Goals for targets, Progress for logs and adherence.")
         );
-        card.getStyleClass().add("surface-card");
-        card.setMaxWidth(760);
-
-        VBox page = new VBox(card);
-        page.getStyleClass().add("page-plain");
-        page.setPadding(new Insets(20));
-
-        ScrollPane scroll = new ScrollPane(page);
-        Theme.styleScroll(scroll);
-        return scroll;
+        return UiSupport.scroll(page);
     }
 
     private static List<Node> buildNutritionBars(NutritionGoalService.DayProgress day) {

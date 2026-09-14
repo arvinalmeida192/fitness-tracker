@@ -3,10 +3,8 @@ package com.fittrack.ui.settings;
 import com.fittrack.app.AppContext;
 import com.fittrack.domain.common.ValidationException;
 import com.fittrack.domain.progress.PersonalRecord;
-import com.fittrack.ui.common.Theme;
 import com.fittrack.ui.common.UiSupport;
 import javafx.application.Platform;
-import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -97,11 +95,7 @@ public final class SettingsView {
                 error,
                 status
         );
-        page.setPadding(new Insets(20));
-
-        ScrollPane scroll = new ScrollPane(page);
-        Theme.styleScroll(scroll);
-        return scroll;
+        return UiSupport.scroll(page);
     }
 
     private void saveApiKey() {

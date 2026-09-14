@@ -154,7 +154,7 @@ Java_project/
 | `export` | `BackupService` — copy SQLite file; Jackson JSON user snapshot import/export |
 | `concurrent` | `PrNotificationBuffer` — bounded recent PR list for Settings |
 | `util` | `PasswordHasher` (PBKDF2), `PasswordStrengthChecker`, `BodyMetrics` (BMI/BMR/TDEE) |
-| `ui` | `ShellController` navigation shell; feature views build scene graphs in code |
+| `ui` | `ShellController` side-nav shell; feature views share `UiSupport.page` / `embed` chrome |
 
 ### Architecture notes
 

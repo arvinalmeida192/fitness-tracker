@@ -5,7 +5,6 @@ import com.fittrack.domain.common.AuthenticationException;
 import com.fittrack.domain.common.ValidationException;
 import com.fittrack.ui.common.Theme;
 import com.fittrack.ui.common.UiSupport;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -56,9 +55,13 @@ public final class LoginView {
         form.addRow(1, new Label("Password"), password);
 
         HBox actions = new HBox(10, login, register);
-        VBox root = new VBox(14, Theme.title("Log in"), Theme.muted("Sign in to continue training and nutrition tracking."), form, error, actions);
-        root.getStyleClass().add("auth-panel");
-        root.setPadding(new Insets(40));
+        VBox root = UiSupport.page(
+                "Log in",
+                Theme.muted("Sign in to continue training and nutrition tracking."),
+                form,
+                error,
+                actions
+        );
         root.setMaxWidth(460);
         return root;
     }

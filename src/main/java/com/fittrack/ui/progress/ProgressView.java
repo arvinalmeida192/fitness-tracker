@@ -147,10 +147,7 @@ public final class ProgressView {
         VBox.setVgrow(prTable, Priority.ALWAYS);
         VBox.setVgrow(historyTable, Priority.ALWAYS);
         VBox.setVgrow(weightLogTable, Priority.ALWAYS);
-
-        ScrollPane scroll = new ScrollPane(page);
-        Theme.styleScroll(scroll);
-        return scroll;
+        return UiSupport.scroll(page);
     }
 
     private VBox buildBodyGoalForm() {

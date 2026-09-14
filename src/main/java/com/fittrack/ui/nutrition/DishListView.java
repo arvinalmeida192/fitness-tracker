@@ -7,7 +7,6 @@ import com.fittrack.service.DishService;
 import com.fittrack.ui.common.UiSupport;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -63,14 +62,13 @@ public final class DishListView {
         HBox.setHgrow(nameField, Priority.ALWAYS);
         HBox actions = new HBox(8, edit, delete);
 
-        VBox root = new VBox(12,
+        VBox root = UiSupport.embed(
                 new Label("Build recipes from cached ingredients. Portion math uses batch weight (or cooked yield)."),
                 createRow,
                 actions,
                 error,
                 table
         );
-        root.setPadding(new Insets(8, 24, 24, 24));
         VBox.setVgrow(table, Priority.ALWAYS);
         refresh();
         return root;

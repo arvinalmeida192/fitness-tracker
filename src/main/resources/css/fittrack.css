@@ -20,23 +20,42 @@
 
 .content-host {
     -fx-background-color: transparent;
+    -fx-padding: 16;
 }
 
-.nav-bar {
+.auth-host {
+    -fx-background-color: transparent;
+    -fx-padding: 24;
+    -fx-alignment: center;
+}
+
+.side-nav {
     -fx-background-color: #0f172a;
-    -fx-padding: 10 14 10 14;
-    -fx-spacing: 8;
+    -fx-padding: 18 12 16 12;
+    -fx-spacing: 6;
+    -fx-pref-width: 200;
+    -fx-min-width: 180;
+}
+
+.side-brand {
+    -fx-font-family: "Manrope";
+    -fx-font-weight: 700;
+    -fx-font-size: 16px;
+    -fx-text-fill: #f8fafc;
+    -fx-padding: 4 8 14 8;
 }
 
 .nav-user {
-    -fx-text-fill: #cbd5e1;
-    -fx-padding: 0 10 0 0;
+    -fx-text-fill: #94a3b8;
+    -fx-padding: 8 8 4 8;
     -fx-font-size: 12px;
 }
 
 .status-bar {
     -fx-background-color: #f1f5f9;
     -fx-padding: 7 14 7 14;
+    -fx-border-color: #e2e8f0 transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
 }
 
 .status-label {
@@ -49,14 +68,7 @@
 .page-title {
     -fx-font-family: "Manrope";
     -fx-font-weight: 700;
-    -fx-font-size: 24px;
-    -fx-text-fill: #0f172a;
-}
-
-.hero-title {
-    -fx-font-family: "Manrope";
-    -fx-font-weight: 800;
-    -fx-font-size: 28px;
+    -fx-font-size: 22px;
     -fx-text-fill: #0f172a;
 }
 
@@ -119,31 +131,14 @@
     -fx-border-color: #cbd5e1;
     -fx-border-radius: 8;
     -fx-border-width: 1;
-    -fx-padding: 24;
+    -fx-padding: 22;
     -fx-spacing: 12;
 }
 
-.page-plain {
+.page-embed {
     -fx-background-color: transparent;
-    -fx-padding: 20;
-}
-
-.surface-card {
-    -fx-background-color: #ffffff;
-    -fx-background-radius: 8;
-    -fx-border-color: #cbd5e1;
-    -fx-border-radius: 8;
-    -fx-border-width: 1;
-    -fx-padding: 22;
-}
-
-.auth-panel {
-    -fx-background-color: #ffffff;
-    -fx-background-radius: 10;
-    -fx-border-color: #cbd5e1;
-    -fx-border-radius: 10;
-    -fx-border-width: 1;
-    -fx-padding: 36;
+    -fx-padding: 4 0 0 0;
+    -fx-spacing: 12;
 }
 
 .scroll-plain {
@@ -202,16 +197,36 @@
 }
 
 .button.nav {
-    -fx-background-color: #1e293b;
+    -fx-background-color: transparent;
     -fx-text-fill: #e2e8f0;
-    -fx-border-color: #334155;
+    -fx-border-color: transparent;
     -fx-background-radius: 6;
+    -fx-padding: 9 12 9 12;
+    -fx-alignment: CENTER_LEFT;
 }
 
 .button.nav:hover {
+    -fx-background-color: #1e293b;
+    -fx-text-fill: white;
+}
+
+.button.nav-active {
     -fx-background-color: #0f766e;
     -fx-text-fill: white;
     -fx-border-color: #0d9488;
+}
+
+.button.nav-active:hover {
+    -fx-background-color: #0d9488;
+}
+
+.button.nav-logout {
+    -fx-text-fill: #94a3b8;
+}
+
+.button.nav-logout:hover {
+    -fx-background-color: #334155;
+    -fx-text-fill: #f8fafc;
 }
 
 .button.tab {

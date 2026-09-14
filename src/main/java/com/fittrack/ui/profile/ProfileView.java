@@ -11,7 +11,6 @@ import com.fittrack.service.ProfileService;
 import com.fittrack.ui.common.UiSupport;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -141,7 +140,6 @@ public final class ProfileView {
                 historyTitle,
                 history
         );
-        root.setPadding(new Insets(20));
         return root;
     }
 

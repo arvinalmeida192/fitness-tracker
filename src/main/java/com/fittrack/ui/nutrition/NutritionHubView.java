@@ -1,11 +1,9 @@
 package com.fittrack.ui.nutrition;
 
-import com.fittrack.ui.common.Theme;
-import javafx.geometry.Insets;
+import com.fittrack.ui.common.UiSupport;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
@@ -22,10 +20,7 @@ public final class NutritionHubView {
     private final StackPane content = new StackPane();
     private final List<Button> tabs = new ArrayList<>();
 
-    public BorderPane getRoot() {
-        BorderPane root = new BorderPane();
-        root.getStyleClass().add("page-plain");
-
+    public VBox getRoot() {
         Button ingredients = tab("Ingredients", this::showIngredients);
         Button dishes = tab("Dishes", this::showDishes);
         Button meals = tab("Meals", this::showMeals);
@@ -34,61 +29,49 @@ public final class NutritionHubView {
         HBox tabBar = new HBox(4, ingredients, dishes, meals, goals);
         tabBar.setAlignment(Pos.CENTER_LEFT);
 
-        VBox header = new VBox(12, Theme.title("Nutrition"), tabBar);
-        header.setPadding(new Insets(20, 24, 8, 24));
-
-        root.setTop(header);
-        root.setCenter(content);
+        VBox page = UiSupport.page("Nutrition", tabBar, content);
+        VBox.setVgrow(content, Priority.ALWAYS);
         showIngredients();
-        return root;
+        return page;
     }
 
     private Button tab(String label, Runnable action) {
         Button button = new Button(label);
         button.getStyleClass().add("tab");
         tabs.add(button);
-        button.setOnAction(e -> {
-            for (Button tab : tabs) {
-                tab.getStyleClass().remove("tab-active");
-            }
-            button.getStyleClass().add("tab-active");
-            action.run();
-        });
+        button.setOnAction(e -> action.run());
         return button;
     }
 
+    private void setActiveTab(Button button) {
+        for (Button tab : tabs) {
+            tab.getStyleClass().remove("tab-active");
+        }
+        button.getStyleClass().add("tab-active");
+    }
+
     private void showIngredients() {
-        activateFirstMatching("Ingredients");
-        setContent(new IngredientSearchView().getRootWithoutOuterTitle());
+        setActiveTab(tabs.get(0));
+        setContent(new IngredientSearchView().getRoot());
     }
 
     private void showDishes() {
-        activateFirstMatching("Dishes");
-        DishListView list = new DishListView(swap -> setContent(swap));
+        setActiveTab(tabs.get(1));
+        DishListView list = new DishListView(this::setContent);
         setContent(list.getRoot());
     }
 
     private void showMeals() {
-        activateFirstMatching("Meals");
+        setActiveTab(tabs.get(2));
         setContent(new MealDiaryView().getRoot());
     }
 
     private void showGoals() {
-        activateFirstMatching("Goals");
+        setActiveTab(tabs.get(3));
         setContent(new NutritionGoalsView().getRoot());
-    }
-
-    private void activateFirstMatching(String label) {
-        for (Button tab : tabs) {
-            tab.getStyleClass().remove("tab-active");
-            if (label.equals(tab.getText())) {
-                tab.getStyleClass().add("tab-active");
-            }
-        }
     }
 
     private void setContent(Node node) {
         content.getChildren().setAll(node);
-        VBox.setVgrow(content, Priority.ALWAYS);
     }
 }

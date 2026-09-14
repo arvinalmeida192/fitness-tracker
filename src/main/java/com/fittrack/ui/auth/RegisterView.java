@@ -6,7 +6,6 @@ import com.fittrack.domain.common.ValidationException;
 import com.fittrack.ui.common.Theme;
 import com.fittrack.ui.common.UiSupport;
 import com.fittrack.util.PasswordStrengthChecker;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -101,15 +100,13 @@ public final class RegisterView {
         form.addRow(r++, new Label("Weight (kg)"), weight);
 
         HBox actions = new HBox(10, create, back);
-        VBox root = new VBox(14,
-                Theme.title("Create account"),
+        VBox root = UiSupport.page(
+                "Create account",
                 Theme.muted("Profile age is always calculated from date of birth."),
                 form,
                 error,
                 actions
         );
-        root.getStyleClass().add("auth-panel");
-        root.setPadding(new Insets(28));
         root.setMaxWidth(560);
         return root;
     }

@@ -6,7 +6,6 @@ import com.fittrack.domain.nutrition.NutritionGoal;
 import com.fittrack.service.NutritionGoalService;
 import com.fittrack.ui.common.Theme;
 import com.fittrack.ui.common.UiSupport;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
@@ -36,7 +35,6 @@ public final class NutritionGoalsView {
 
     public VBox getRoot() {
         status.getStyleClass().add("success");
-        barsBox.setPadding(new Insets(4, 0, 0, 0));
 
         Button save = new Button("Save goals");
         Theme.primary(save);
@@ -59,21 +57,17 @@ public final class NutritionGoalsView {
 
         HBox actions = new HBox(8, save);
 
-        Label todayTitle = Theme.section("Today");
-
         loadIntoForm();
         refreshBars();
 
-        VBox root = new VBox(12,
+        return UiSupport.embed(
                 form,
                 actions,
                 error,
                 status,
-                todayTitle,
+                Theme.section("Today"),
                 barsBox
         );
-        root.setPadding(new Insets(8, 24, 24, 24));
-        return root;
     }
 
     private void loadIntoForm() {

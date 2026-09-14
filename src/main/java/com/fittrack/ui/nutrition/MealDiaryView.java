@@ -14,7 +14,6 @@ import com.fittrack.ui.common.SearchableComboBox;
 import com.fittrack.ui.common.UiSupport;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -97,7 +96,7 @@ public final class MealDiaryView {
 
         HBox actions = new HBox(8, delete, refresh);
 
-        VBox root = new VBox(12,
+        VBox root = UiSupport.embed(
                 new Label("Today's meals — portion macros = batch × (portionG / basisWeight). Example: 373 g of a 1000 g batch → 37.3%."),
                 form,
                 actions,
@@ -105,7 +104,6 @@ public final class MealDiaryView {
                 totals,
                 table
         );
-        root.setPadding(new Insets(8, 24, 24, 24));
         VBox.setVgrow(table, Priority.ALWAYS);
         return root;
     }

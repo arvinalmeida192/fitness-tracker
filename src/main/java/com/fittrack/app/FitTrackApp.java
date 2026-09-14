@@ -20,11 +20,11 @@ public final class FitTrackApp extends Application {
     public void start(Stage stage) {
         Theme.ensureFonts();
         ShellController shell = new ShellController();
-        Scene scene = new Scene(shell.getRoot(), 1024, 700);
+        Scene scene = new Scene(shell.getRoot(), 1100, 720);
         Theme.apply(scene);
         stage.setTitle(AppContext.config().get("app.name", "Fitness Tracking System"));
-        stage.setMinWidth(880);
-        stage.setMinHeight(560);
+        stage.setMinWidth(960);
+        stage.setMinHeight(600);
         stage.setScene(scene);
         stage.show();
     }

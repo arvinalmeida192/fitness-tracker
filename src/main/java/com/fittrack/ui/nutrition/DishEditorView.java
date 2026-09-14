@@ -10,11 +10,11 @@ import com.fittrack.domain.nutrition.PortionScaler;
 import com.fittrack.service.DishService;
 import com.fittrack.service.NutritionService;
 import com.fittrack.ui.common.SearchableComboBox;
+import com.fittrack.ui.common.Theme;
 import com.fittrack.ui.common.UiSupport;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -103,10 +103,10 @@ public final class DishEditorView {
         HBox portionRow = new HBox(8, portionPreviewField, previewBtn);
         HBox actions = new HBox(8, save, back);
 
-        VBox root = new VBox(12,
-                new Label("Edit dish"),
+        VBox root = UiSupport.embed(
+                Theme.section("Edit dish"),
                 meta,
-                new Label("Ingredients"),
+                Theme.section("Ingredients"),
                 addRow,
                 table,
                 totals,
@@ -115,7 +115,6 @@ public final class DishEditorView {
                 error,
                 actions
         );
-        root.setPadding(new Insets(8, 24, 24, 24));
         VBox.setVgrow(table, Priority.ALWAYS);
         return root;
     }

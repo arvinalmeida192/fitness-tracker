@@ -14,7 +14,6 @@ import com.fittrack.ui.common.UiSupport;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -174,12 +173,8 @@ public final class PlanEditorView {
                 error,
                 ok
         );
-        page.setPadding(new Insets(20));
         VBox.setVgrow(table, Priority.ALWAYS);
-
-        ScrollPane scroll = new ScrollPane(page);
-        Theme.styleScroll(scroll);
-        return scroll;
+        return UiSupport.scroll(page);
     }
 
     private void buildTable() {
