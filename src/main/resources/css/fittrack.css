@@ -1,0 +1,354 @@
+/* FitTrack theme — teal/slate (no dropshadows / no gradients for performance) */
+
+.root {
+    -fx-font-family: "Manrope";
+    -fx-font-size: 13px;
+    -fx-base: #f1f5f9;
+    -fx-background: #e8eef5;
+    -fx-control-inner-background: #ffffff;
+    -fx-accent: #0f766e;
+    -fx-focus-color: #14b8a6;
+    -fx-faint-focus-color: transparent;
+    -fx-text-fill: #0f172a;
+}
+
+/* —— Shell —— */
+
+.app-shell {
+    -fx-background-color: #e8eef5;
+}
+
+.content-host {
+    -fx-background-color: transparent;
+}
+
+.nav-bar {
+    -fx-background-color: #0f172a;
+    -fx-padding: 10 14 10 14;
+    -fx-spacing: 8;
+}
+
+.nav-user {
+    -fx-text-fill: #cbd5e1;
+    -fx-padding: 0 10 0 0;
+    -fx-font-size: 12px;
+}
+
+.status-bar {
+    -fx-background-color: #f1f5f9;
+    -fx-padding: 7 14 7 14;
+}
+
+.status-label {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 11px;
+}
+
+/* —— Typography —— */
+
+.page-title {
+    -fx-font-family: "Manrope";
+    -fx-font-weight: 700;
+    -fx-font-size: 24px;
+    -fx-text-fill: #0f172a;
+}
+
+.hero-title {
+    -fx-font-family: "Manrope";
+    -fx-font-weight: 800;
+    -fx-font-size: 28px;
+    -fx-text-fill: #0f172a;
+}
+
+.section-title {
+    -fx-font-family: "Manrope";
+    -fx-font-weight: 700;
+    -fx-font-size: 15px;
+    -fx-text-fill: #0f172a;
+}
+
+.body-text {
+    -fx-font-size: 13px;
+    -fx-text-fill: #334155;
+}
+
+.muted {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 13px;
+}
+
+.hint {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 12px;
+}
+
+.micro {
+    -fx-text-fill: #64748b;
+    -fx-font-size: 11px;
+}
+
+.success {
+    -fx-text-fill: #15803d;
+    -fx-font-size: 12px;
+}
+
+.error-label {
+    -fx-text-fill: #b91c1c;
+    -fx-font-size: 12px;
+}
+
+.timer {
+    -fx-font-family: "Manrope";
+    -fx-font-weight: 700;
+    -fx-font-size: 18px;
+    -fx-text-fill: #0f766e;
+}
+
+.exercise-title {
+    -fx-font-family: "Manrope";
+    -fx-font-weight: 700;
+    -fx-font-size: 20px;
+    -fx-text-fill: #0f172a;
+}
+
+/* —— Surfaces —— */
+
+.page {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-padding: 24;
+    -fx-spacing: 12;
+}
+
+.page-plain {
+    -fx-background-color: transparent;
+    -fx-padding: 20;
+}
+
+.surface-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 8;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-padding: 22;
+}
+
+.auth-panel {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 10;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-padding: 36;
+}
+
+.scroll-plain {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-plain > .viewport {
+    -fx-background-color: transparent;
+}
+
+.scroll-plain > .corner {
+    -fx-background-color: transparent;
+}
+
+/* —— Controls —— */
+
+.button {
+    -fx-background-color: #e2e8f0;
+    -fx-text-fill: #0f172a;
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+    -fx-border-color: #cbd5e1;
+    -fx-border-width: 1;
+    -fx-padding: 7 14 7 14;
+    -fx-cursor: hand;
+    -fx-font-family: "Manrope";
+    -fx-font-weight: 600;
+    -fx-font-size: 12px;
+}
+
+.button:hover {
+    -fx-background-color: #cbd5e1;
+}
+
+.button:pressed {
+    -fx-background-color: #94a3b8;
+}
+
+.button:default,
+.button.primary {
+    -fx-background-color: #0f766e;
+    -fx-text-fill: white;
+    -fx-border-color: #0d9488;
+}
+
+.button:default:hover,
+.button.primary:hover {
+    -fx-background-color: #0d9488;
+}
+
+.button:default:pressed,
+.button.primary:pressed {
+    -fx-background-color: #115e59;
+}
+
+.button.nav {
+    -fx-background-color: #1e293b;
+    -fx-text-fill: #e2e8f0;
+    -fx-border-color: #334155;
+    -fx-background-radius: 6;
+}
+
+.button.nav:hover {
+    -fx-background-color: #0f766e;
+    -fx-text-fill: white;
+    -fx-border-color: #0d9488;
+}
+
+.button.tab {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #cbd5e1 transparent;
+    -fx-border-width: 0 0 2 0;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-text-fill: #64748b;
+    -fx-padding: 8 12 8 12;
+}
+
+.button.tab:hover {
+    -fx-text-fill: #0f172a;
+    -fx-border-color: transparent transparent #94a3b8 transparent;
+}
+
+.button.tab-active {
+    -fx-text-fill: #0f766e;
+    -fx-border-color: transparent transparent #0f766e transparent;
+    -fx-font-family: "Manrope";
+    -fx-font-weight: 700;
+}
+
+.text-field,
+.password-field,
+.text-area,
+.combo-box,
+.date-picker,
+.spinner {
+    -fx-background-radius: 6;
+    -fx-border-radius: 6;
+}
+
+.text-field,
+.password-field,
+.text-area {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cbd5e1;
+    -fx-border-width: 1;
+    -fx-padding: 7 10 7 10;
+}
+
+.text-field:focused,
+.password-field:focused,
+.text-area:focused {
+    -fx-border-color: #14b8a6;
+}
+
+.combo-box {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #cbd5e1;
+    -fx-border-width: 1;
+}
+
+.combo-box:focused {
+    -fx-border-color: #14b8a6;
+}
+
+.combo-box .list-cell {
+    -fx-padding: 6 10 6 10;
+}
+
+.table-view {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 6;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 6;
+    -fx-border-width: 1;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #f1f5f9;
+}
+
+.table-view .column-header,
+.table-view .filler {
+    -fx-size: 34;
+    -fx-border-color: transparent transparent #e2e8f0 transparent;
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header .label {
+    -fx-font-family: "Manrope";
+    -fx-font-weight: 600;
+    -fx-text-fill: #334155;
+    -fx-font-size: 12px;
+}
+
+.table-row-cell {
+    -fx-background-color: #ffffff;
+    -fx-border-color: transparent transparent #f1f5f9 transparent;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #f8fafc;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #ccfbf1;
+    -fx-text-background-color: #134e4a;
+}
+
+.progress-bar {
+    -fx-pref-height: 12;
+    -fx-background-radius: 6;
+}
+
+.progress-bar > .track {
+    -fx-background-color: #e2e8f0;
+    -fx-background-radius: 6;
+}
+
+.progress-bar > .bar {
+    -fx-background-color: #0f766e;
+    -fx-background-radius: 6;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.progress-bar.bar-ok > .bar {
+    -fx-background-color: #16a34a;
+}
+
+.progress-bar.bar-warn > .bar {
+    -fx-background-color: #2563eb;
+}
+
+.progress-bar.bar-over > .bar {
+    -fx-background-color: #dc2626;
+}
+
+.separator *.line {
+    -fx-border-color: #e2e8f0;
+    -fx-border-width: 1 0 0 0;
+}
+
+.check-box {
+    -fx-text-fill: #334155;
+}

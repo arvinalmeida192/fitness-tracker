@@ -1,0 +1,15 @@
+target/
+data/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+config.local.properties
+*.log
+.DS_Store
